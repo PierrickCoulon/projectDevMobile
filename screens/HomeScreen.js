@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         tabBarLabel: 'Home',
         tabBarVisible: true,
         tabBarIcon: ({ tintColor }) => (
-            <Image source={require('../images/home.png')}
+            <Image source={require('../assets/images/home.png')}
                 style={styles.imageNav}>
             </Image>
         )
@@ -15,11 +15,12 @@ export default class HomeScreen extends React.Component {
         super(props)
     }
 
-    
+
 
     render() {
         return (
             <View style={styles.container}>
+                <Text style={styles.text}>Best Deals</Text>
                 <Text>Home Screen</Text>
             </View>
         );
@@ -36,5 +37,17 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         tintColor: 'black'
+    },
+    text: {
+        fontFamily: "Pacifico",
+        position: 'absolute',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 30,
+        top: 50,
+        textShadowColor: 'lightgreen',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     }
 })

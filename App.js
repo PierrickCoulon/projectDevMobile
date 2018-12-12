@@ -26,7 +26,7 @@ var TabScreenNavigator = TabNavigator({
     tabBarOptions: {
       scrollEnabled: true,
       activeTintColor: 'white',
-      activeBackgroundColor: 'lightblue',
+      activeBackgroundColor: 'lightgreen',
       labelStyle: {
         fontSize: 8,
       }

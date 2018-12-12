@@ -6,8 +6,9 @@ export default class LoginScreen extends React.Component {
     static navigationOptions = {
         tabBarLabel: 'Login',
         tabBarVisible: false,
+        header: null,
         tabBarIcon: ({ tintColor }) => (
-            <Image source={require('../images/logF.png')}
+            <Image source={require('../assets/images/logF.png')}
                 style={styles.imageNav}>
             </Image>
         )
@@ -28,7 +29,7 @@ export default class LoginScreen extends React.Component {
 
     render() {
         return (
-            <ImageBackground source={require('../images/bg.png')} style={styles.container}>
+            <ImageBackground source={require('../assets/images/bg.png')} style={styles.container}>
                 <View style={styles.inner}>
                     <Text style={styles.title}>NearBy</Text>
                     <Text style={styles.subtitle}>The best deals near you</Text>
@@ -36,13 +37,13 @@ export default class LoginScreen extends React.Component {
                     <TouchableHighlight style={styles.touchBtnFb} onPress={() => this.props.navigation.navigate('Tab1')}>
                         <Image
                             style={styles.btnFb}
-                            source={require('../images/logF.png')}
+                            source={require('../assets/images/logF.png')}
                         />
                     </TouchableHighlight>
                     <TouchableHighlight style={styles.touchBtnGoogle} onPress={() => this.props.navigation.navigate('Tab1')}>
                         <Image
                             style={styles.btnGoogle}
-                            source={require('../images/loginGoogle.png')}
+                            source={require('../assets/images/loginGoogle.png')}
                         />
                     </TouchableHighlight>
                 </View>
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
+        fontFamily: "Pacifico",
         textAlign: 'center',
         fontSize: 80,
         alignItems: 'center',
@@ -74,6 +76,7 @@ const styles = StyleSheet.create({
     },
 
     subtitle: {
+        fontFamily: "Pacifico",
         textAlign: 'center',
         fontSize: 25,
         alignItems: 'center',

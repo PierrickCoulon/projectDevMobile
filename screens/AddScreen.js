@@ -5,11 +5,13 @@ export default class AddScreen extends React.Component {
     static navigationOptions = {
         tabBarLabel: 'Add',
         tabBarVisible: true,
+        headerRight: 'Lol',
         tabBarIcon: ({ tintColor }) => (
-            <Image source={require('../images/add.png')}
+            <Image source={require('../assets/images/add.png')}
                 style={styles.imageNav}>
             </Image>
-        )
+        ),
+
     }
     constructor(props) {
         super(props)
@@ -19,6 +21,7 @@ export default class AddScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <Text style={styles.text}>My Deals</Text>
                 <Text>AddScreen Screen</Text>
             </View>
         );
@@ -35,5 +38,17 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         tintColor: 'black'
+    },
+    text: {
+        fontFamily: "Pacifico",
+        position: 'absolute',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 30,
+        top: 50,
+        textShadowColor: 'lightgreen',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     }
 })
