@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, NavigationActions } from 'react-native';
+import { View, Text, Image, StyleSheet, NavigationActions, FlatList } from 'react-native';
+import { Button } from 'react-native-elements';
 
 export default class ProfilScreen extends React.Component {
     static navigationOptions = {
@@ -16,14 +17,64 @@ export default class ProfilScreen extends React.Component {
         super(props)
     }
 
-
     render() {
         const { currentPage } = this.props
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>My Account</Text>
-                <Text>Profil Screen</Text>
-            </View>
+                <Button  
+                    icon={{
+                        name: 'library-books',
+                        size: 35,
+                        color: 'white'
+                    }}
+                    title='My deals'
+                    buttonStyle={{
+                        backgroundColor: "rgba(46, 204, 113,1.0)",
+                        width: 300,
+                        height: 45,
+                        borderColor: "transparent",
+                        borderWidth: 0,
+                        bottom: 10,
+                        borderRadius: 5
+                      }}
+                />
+                <Button
+                    icon={{
+                        name: 'settings',
+                        size: 35,
+                        color: 'white'
+                    }}
+                    title='Settings'
+                    buttonStyle={{
+                        backgroundColor: "rgba(149, 165, 166,1.0)",
+                        width: 300,
+                        height: 45,
+                        borderColor: "transparent",
+                        borderWidth: 0,
+                        borderRadius: 5
+                      }}
+                />
+
+                <Button
+                    icon={{
+                        name: 'help',
+                        size: 35,
+                        color: 'white'
+                    }}
+                    title='Settings'
+                    buttonStyle={{
+                        backgroundColor: "rgba(255, 121, 121,1.0)",
+                        width: 300,
+                        height: 45,
+                        borderColor: "transparent",
+                        top: 10,
+                        borderWidth: 0,
+                        borderRadius: 5
+                      }}
+                />
+
+            </View >
         );
     }
 }
