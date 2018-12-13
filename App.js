@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator, TabBarBottom} from 'react-navigation';
 
 import HomeScreen from './screens/HomeScreen';
 import FavoriteScreen from './screens/FavoriteScreen';
@@ -20,6 +20,7 @@ var TabScreenNavigator = TabNavigator({
   Tab4: { screen: MapScreen },
   Tab5: { screen: ProfilScreen },
 }, {
+    tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     swipeEnabled: false,
     animationEnabled: true,

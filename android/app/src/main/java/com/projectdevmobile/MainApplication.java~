@@ -3,12 +3,13 @@ package com.projectdevmobile;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-
+<<<<<<< HEAD
 import org.reactnative.camera.RNCameraPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import io.invertase.firebase.RNFirebasePackage;
-
+=======
+>>>>>>> a10d8d445c8caef90f03a283251bf5da10d7a53a
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -31,12 +32,15 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-
+<<<<<<< HEAD
             new RNCameraPackage(),
             new MapsPackage(),
             new VectorIconsPackage(),
             new RNFirebasePackage()
-
+=======
+           new MapsPackage(),
+           new VectorIconsPackage()
+>>>>>>> a10d8d445c8caef90f03a283251bf5da10d7a53a
       );
     }
 
