@@ -1,5 +1,15 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, NavigationActions, Colors } from 'react-native';
+import { Alert, View, Text, Image, StyleSheet, NavigationActions, Colors, ScrollView } from 'react-native';
+import { Card , Button } from 'react-native-elements'
+import { title,
+    description,
+    position,
+    favorites,
+    listFavIsEmpty,
+    nearDiscounts,
+    ListFav,
+    ListFavByIdx,
+} from '../controllers/globals'
 
 export default class FavoriteScreen extends React.Component {
     static navigationOptions = {
@@ -16,20 +26,8 @@ export default class FavoriteScreen extends React.Component {
         super(props)
     }
 
-
-    // didFocusSubscription = this.props.navigation.addListener(
-    //     'didFocus',
-    //     payload => {
-    //         let moment = require("moment");
-    //         if ("default" in moment) {
-    //             moment = moment["default"];
-    //         }
-    //     }
-    // );
-
-
     render() {
-        if (!global.listFavIsEmpty) {
+        if (listFavIsEmpty) {
             //Empty List
             return (
                 <View style={styles.container}>
@@ -42,12 +40,44 @@ export default class FavoriteScreen extends React.Component {
                 </View>
             );
         } else {
-            // List fav fill
-            return (
-                <View style={styles.container}>
-                    <Text style={styles.text}>My Favorites</Text>
-                    <Text>Favorite Screen</Text>
-                </View>
+            // List fav fill            
+             return (
+                <ScrollView>
+                {
+                    title.map((value, index) => {
+                        
+                    if (favorites[index] = true)
+                    {
+                        
+                    <Card
+                    key={index}
+                    title={value}
+                    >
+                    <Text style={{marginBottom: 0, fontSize: 16}}>
+                      Deal description:
+                    </Text>
+                    <Text style={{marginBottom: 10}}>
+                     {"\n"}{description[index]}
+                     </Text>
+                     <Text style={{marginBottom: 0, fontSize: 16}}>
+                      Where to find it:
+                    </Text>
+                    <Text style={{marginBottom: 10}}>
+                     {"\n"}{position[index]}
+                    </Text>
+                    <Button
+                        icon={{
+                            name: 'block',
+                            size: 20,
+                            color: 'white'
+                        }}
+                        backgroundColor='#00000'
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        />
+                  </Card>}
+                  })
+                }
+            </ScrollView>
             );
         }
     }

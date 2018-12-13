@@ -70,8 +70,8 @@ export default class AddScreen extends React.Component {
 const styles = StyleSheet.create({
 
     viewcam: {
-        height: '30%',
-        width: '80%',
+        height: '10%',
+        width: '30%',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',

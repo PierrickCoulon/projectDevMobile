@@ -1,5 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Card , Button, Icon } from 'react-native-elements'
+import { title,
+    description,
+    position,
+    favorites,
+    listFavIsEmpty,
+    nearDiscounts,
+    ListFav,
+    ListFavByIdx,
+    path
+} from '../controllers/globals'
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -13,16 +24,63 @@ export default class HomeScreen extends React.Component {
     }
     constructor(props) {
         super(props)
+        this.rendermap = this.rendermap.bind(this);
+        this.rendercard = this.rendercard.bind(this);
     }
 
+    onPress = (index) => {
+    console.warn(index + 'On press')
+    ListFav(false);
+    ListFavByIdx(index, true)
+    
+}
+
+rendercard(value, index) {
+    return (<Card
+        title={value}
+        titleStyle={styles.text}
+        >
+        <Image  source={path[index]} style={styles.image}/>
+        <Text style={styles.text}>
+          Deal description:
+        </Text>
+        <Text style={styles.text1}>
+         {"\n"}{description[index]}
+         </Text>
+         <Text style={styles.text}>
+          Where to find it:
+        </Text>
+        <Text style={styles.text1}>
+         {"\n"}{position[index]}
+        </Text>
+        <Button
+            key={index}
+            icon={{
+                name: 'favorite',
+                size: 20,
+                color: 'white'
+            }}
+            onPress={() => this.onPress(index)}
+            backgroundColor='#ff7675'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            />
+      </Card>)
+  }
+
+rendermap = () => {
+    return title.map((value, index) => (
+      this.rendercard(value, index)
+    ))
+  }
 
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.text}>Best Deals</Text>
-                <Text>Home Screen</Text>
-            </View>
+            <ScrollView>
+                {
+                    this.rendermap()       
+                }
+            </ScrollView>
         );
     }
 }
@@ -40,14 +98,27 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: "Pacifico",
-        position: 'absolute',
-        textAlign: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 30,
-        top: 50,
-        textShadowColor: 'lightgreen',
+        fontSize: 21,
+        lineHeight: 30,
+        textShadowColor: '#7f8c8d',
         textShadowOffset: { width: -1, height: 1 },
         textShadowRadius: 10
+    },
+    text1: {
+        fontFamily: "Pacifico",
+        fontSize: 18,
+        lineHeight: 20,
+        textShadowColor: '#95a5a6',
+        bottom:10,
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
+    },
+image: {
+    flex: 1,
+    width: 70,
+    height: 70,
+    alignItems:'center',
+    resizeMode: 'contain'
     }
+
 })

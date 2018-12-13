@@ -1,8 +1,107 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableHighlight, ImageBackground } from 'react-native';
+import { PermissionsAndroid, View, Text, Image, StyleSheet, TouchableHighlight, ImageBackground } from 'react-native';
+
+async function requestLocationPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          'title': 'Nearby Permissions',
+          'message': 'Nearby needs to access location'
+        }
+      )
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("Contact read ok")
+      } else {
+        console.log("Contact read not ok")
+      }
+    } catch (err) {
+      console.warn(err)
+    }
+  }
+  
+  async function requestcLocationPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+        {
+          'title': 'Nearby Permissions',
+          'message': 'Nearby needs to access location'
+        }
+      )
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("Contact read ok")
+      } else {
+        console.log("Contact read not ok")
+      }
+    } catch (err) {
+      console.warn(err)
+    }
+  }
+
+  async function requestCameraPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          'title': 'Nearby Permissions',
+          'message': 'Nearby needs access to your camera ' +
+                     'so you can take awesome pictures.'
+        }
+      )
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("You can use the camera")
+      } else {
+        console.log("Camera permission denied")
+      }
+    } catch (err) {
+      console.warn(err)
+    }
+  }
+
+  async function requestReadPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        {
+          'title': 'Nearby Permissions',
+          'message': 'Nearby needs access to your camera ' +
+                     'so you can take awesome pictures.'
+        }
+      )
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("You can use the camera")
+      } else {
+        console.log("Camera permission denied")
+      }
+    } catch (err) {
+      console.warn(err)
+    }
+  }
+  async function requestWritePermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          'title': 'Nearby Permissions',
+          'message': 'Nearby needs access to your camera ' +
+                     'so you can take awesome pictures.'
+        }
+      )
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("You can use the camera")
+      } else {
+        console.log("Camera permission denied")
+      }
+    } catch (err) {
+      console.warn(err)
+    }
+  }
 
 export default class LoginScreen extends React.Component {
 
+
+    
     static navigationOptions = {
         tabBarLabel: 'Login',
         tabBarVisible: false,
@@ -18,13 +117,12 @@ export default class LoginScreen extends React.Component {
         super(props)
     }
 
-    _onPressButtonFb() {
-        // this.props.navigation.navigate('Tab2')
-        console.log("fb")
-    }
-
-    _onPressButtonGoogle() {
-        console.log('home')
+    componentDidMount() {
+        requestLocationPermission();
+        requestcLocationPermission();
+        requestCameraPermission();
+        requestReadPermission();
+        requestWritePermission();
     }
 
     render() {
