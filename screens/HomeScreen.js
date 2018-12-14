@@ -1,16 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { Card , Button, Icon } from 'react-native-elements'
-import { title,
-    description,
-    position,
-    favorites,
-    listFavIsEmpty,
-    nearDiscounts,
-    ListFav,
-    ListFavByIdx,
-    path
-} from '../controllers/globals'
+import { Card, Button, Icon } from 'react-native-elements'
+import { title, description, position, listFavIsEmpty, ListFav, ListFavByIdx, path } from '../controllers/globals'
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -29,56 +20,35 @@ export default class HomeScreen extends React.Component {
     }
 
     onPress = (index) => {
-    console.warn(index + 'On press')
-    ListFav(false);
-    ListFavByIdx(index, true)
-    
-}
+        console.warn(index + 'On press')
+        ListFav(false);
+        ListFavByIdx(index, true)
 
-rendercard(value, index) {
-    return (<Card
-        title={value}
-        titleStyle={styles.text}
-        >
-        <Image  source={path[index]} style={styles.image}/>
-        <Text style={styles.text}>
-          Deal description:
-        </Text>
-        <Text style={styles.text1}>
-         {"\n"}{description[index]}
-         </Text>
-         <Text style={styles.text}>
-          Where to find it:
-        </Text>
-        <Text style={styles.text1}>
-         {"\n"}{position[index]}
-        </Text>
-        <Button
-            key={index}
-            icon={{
-                name: 'favorite',
-                size: 20,
-                color: 'white'
-            }}
-            onPress={() => this.onPress(index)}
-            backgroundColor='#ff7675'
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-            />
-      </Card>)
-  }
+    }
 
-rendermap = () => {
-    return title.map((value, index) => (
-      this.rendercard(value, index)
-    ))
-  }
+    rendercard(value, index) {
+        return (<Card title={value} titleStyle={styles.text}>
+            <Image source={path[index]} style={styles.image} />
+            <Text style={styles.text}>Deal description:</Text>
+            <Text style={styles.text1}>{"\n"}{description[index]}</Text>
+            <Text style={styles.text}>Where to find it:</Text>
+            <Text style={styles.text1}>{"\n"}{position[index]}</Text>
+            <Button key={index} icon={{ name: 'favorite', size: 20, color: 'white' }} onPress={() => this.onPress(index)} buttonStyle={styles.buttonStyle} />
+        </Card>)
+    }
+
+    rendermap = () => {
+        return title.map((value, index) => (
+            this.rendercard(value, index)
+        ))
+    }
 
 
     render() {
         return (
             <ScrollView>
                 {
-                    this.rendermap()       
+                    this.rendermap()
                 }
             </ScrollView>
         );
@@ -109,16 +79,23 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 20,
         textShadowColor: '#95a5a6',
-        bottom:10,
+        bottom: 10,
         textShadowOffset: { width: -1, height: 1 },
         textShadowRadius: 10
     },
-image: {
-    flex: 1,
-    width: 70,
-    height: 70,
-    alignItems:'center',
-    resizeMode: 'contain'
+    buttonStyle: {
+        backgroundColor: '#ff7675',
+        borderRadius: 0,
+        marginLeft: 0,
+        marginRight: 0,
+        marginBottom: 0,
+    },
+    image: {
+        flex: 1,
+        width: 70,
+        height: 70,
+        alignItems: 'center',
+        resizeMode: 'contain'
     }
 
 })

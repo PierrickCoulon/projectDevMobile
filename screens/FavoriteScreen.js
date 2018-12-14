@@ -1,7 +1,8 @@
 import React from 'react';
 import { Alert, View, Text, Image, StyleSheet, NavigationActions, Colors, ScrollView } from 'react-native';
-import { Card , Button } from 'react-native-elements'
-import { title,
+import { Card, Button } from 'react-native-elements'
+import {
+    title,
     description,
     position,
     favorites,
@@ -41,47 +42,29 @@ export default class FavoriteScreen extends React.Component {
             );
         } else {
             // List fav fill            
-             return (
+            return (
                 <ScrollView>
-                {
-                    title.map((value, index) => {
-                        
-                    if (favorites[index] = true)
                     {
-                        
-                    <Card
-                    key={index}
-                    title={value}
-                    >
-                    <Text style={{marginBottom: 0, fontSize: 16}}>
-                      Deal description:
-                    </Text>
-                    <Text style={{marginBottom: 10}}>
-                     {"\n"}{description[index]}
-                     </Text>
-                     <Text style={{marginBottom: 0, fontSize: 16}}>
-                      Where to find it:
-                    </Text>
-                    <Text style={{marginBottom: 10}}>
-                     {"\n"}{position[index]}
-                    </Text>
-                    <Button
-                        icon={{
-                            name: 'block',
-                            size: 20,
-                            color: 'white'
-                        }}
-                        backgroundColor='#00000'
-                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                        />
-                  </Card>}
-                  })
-                }
-            </ScrollView>
+                        title.map((value, index) => {
+
+                            if (favorites[index] = true) {
+                                <Card title={value} titleStyle={styles.text}>
+                                    <Image source={path[index]} style={styles.image} />
+                                    <Text style={styles.text}>Deal description:</Text>
+                                    <Text style={styles.text1}>{"\n"}{description[index]}</Text>
+                                    <Text style={styles.text}>Where to find it:</Text>
+                                    <Text style={styles.text1}>{"\n"}{position[index]}</Text>
+                                    <Button key={index} icon={{ name: 'block', size: 20, color: 'white' }} onPress={() => this.onPress(index)} buttonStyle={styles.buttonStyle} />
+                                </Card>
+                            }
+                        })
+                    }
+                </ScrollView>
             );
         }
     }
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -123,5 +106,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 18,
-    }
+    },
+    buttonStyle: {
+        backgroundColor: '#000000',
+        borderRadius: 0,
+        marginLeft: 0,
+        marginRight: 0,
+        marginBottom: 0,
+    },
+
 })

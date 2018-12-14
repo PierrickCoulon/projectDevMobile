@@ -11,9 +11,9 @@ async function requestLocationPermission() {
         }
       )
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("Contact read ok")
+        console.log("Location ok")
       } else {
-        console.log("Contact read not ok")
+        console.log("Location not ok")
       }
     } catch (err) {
       console.warn(err)
@@ -30,9 +30,9 @@ async function requestLocationPermission() {
         }
       )
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("Contact read ok")
+        console.log("Location ok")
       } else {
-        console.log("Contact read not ok")
+        console.log("Location not ok")
       }
     } catch (err) {
       console.warn(err)
@@ -70,9 +70,9 @@ async function requestLocationPermission() {
         }
       )
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("You can use the camera")
+        console.log("You can use read the storage")
       } else {
-        console.log("Camera permission denied")
+        console.log("Read permission denied")
       }
     } catch (err) {
       console.warn(err)
@@ -89,9 +89,9 @@ async function requestLocationPermission() {
         }
       )
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("You can use the camera")
+        console.log("You can Write on the storage")
       } else {
-        console.log("Camera permission denied")
+        console.log("Write permission denied")
       }
     } catch (err) {
       console.warn(err)
